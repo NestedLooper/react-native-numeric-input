@@ -8,7 +8,7 @@ a cross platform stylish numeric input for react native
 
 ## Working example
 you can check out the very simple react native example app
-just click [here](https://github.com/himelbrand/react-native-numeric-input/tree/master/Example) and follow the instructions
+just click [here](https://github.com/NoamPaz/react-native-numeric-input/tree/master/Example) and follow the instructions
 enjoy!
 
 ## Installation
@@ -101,7 +101,7 @@ Name                                | Type                                | Defa
 **borderColor**                     |`string`                             | `'#d4d4d4'`
 **iconStyle**                       |`object`                             | none
 **totalWidth**                      |`number`                             | calcSize(220)
-**separatorWidth**                   |`number`                             | 1
+**separatorWidth**                  |`number`                             | 1
 **type**                            |`'plus-minus'` or `'up-down'`        | `'plus-minus'`
 **rounded**                         |`boolean`                            | false
 **textColor**                       |`string`                             | `'black'`
