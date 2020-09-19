@@ -21,23 +21,23 @@
     "numeric"
   ],
   "author": {
-    "name": "omri himelbrand",
-    "email": "himelbrand@gmail.com"
+    "name": "Noam Paz",
+    "email": "noam.paz@gmail.com"
   },
-  "homepage": "https://github.com/himelbrand/react-native-numeric-input",
+  "homepage": "https://github.com/NoamPaz/react-native-numeric-input",
   "bugs": {
-    "url": "https://github.com/himelbrand/react-native-numeric-input/issues"
+    "url": "https://github.com/NoamPaz/react-native-numeric-input/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/himelbrand/react-native-numeric-input.git"
+    "url": "git://github.com/NoamPaz/react-native-numeric-input.git"
   },
   "license": "MIT",
   "dependencies": {
-    "prop-types": "^15.6.1",
-    "react-native-pixel-perfect": "^1.0.1"
+    "prop-types": "^15.7.2",
+    "react-native-pixel-perfect": "^1.0.2"
   },
   "peerDependencies": {
-    "react-native-vector-icons": "^4.*"
+    "react-native-vector-icons": "^7.*"
   }
 }
