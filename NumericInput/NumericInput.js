@@ -14,25 +14,26 @@ export default class NumericInput extends Component {
         this.state = {
             value: noInitSent ? props.value ? props.value : 0 : props.initValue,
             lastValid: noInitSent ? props.value ? props.value : 0 : props.initValue,
-            stringValue: (noInitSent ? props.value ? props.value : 0 : props.initValue).toString(),
+			stringValue: (noInitSent ? props.value ? props.value : 0 : props.initValue).toString(),
+			isOnFocus: false
         }
         this.ref = null
     }
 
     // this.props refers to the new props
     componentDidUpdate() {
-        const initSent = !(this.props.initValue !== 0 && !this.props.initValue); 
+        const initSent = !(this.props.initValue !== 0 && !this.props.initValue);
 
         // compare the new value (props.initValue) with the existing/old one (this.state.value)
         if (this.props.initValue !== this.state.value && initSent) {
             this.setState({
                 value: this.props.initValue,
                 lastValid: this.props.initValue,
-                stringValue: this.props.initValue.toString()
+				stringValue: this.props.initValue.toString()
             });
         }
     }
-    
+
     updateBaseResolution = (width, height) => {
         calcSize = create({ width, height })
     }
@@ -146,12 +147,13 @@ export default class NumericInput extends Component {
                 }, 15)
                 setTimeout(() => this.ref.focus(), 50)
             }
-        }
+		}
+		this.setState({isOnFocus: false})
         this.props.onBlur && this.props.onBlur()
     }
 
     onFocus = () => {
-        this.setState({ lastValid: this.state.value })
+        this.setState({ lastValid: this.state.value, isOnFocus: true });
         this.props.onFocus && this.props.onFocus()
     }
 
@@ -214,7 +216,8 @@ export default class NumericInput extends Component {
             borderLeftWidth: sepratorWidth,
             borderRightWidth: sepratorWidth,
             borderRightColor: borderColor
-        }
+		}
+		const stringValue = this.state.stringValue === '0' ? (this.state.isOnFocus ? '' : '- -') : this.state.stringValue;
         if (this.props.type === 'up-down')
             return (
                 <View style={inputContainerStyle}>
@@ -234,7 +237,7 @@ export default class NumericInput extends Component {
                     <Icon name='remove-outline' size={fontSize} style={[...iconStyle, maxReached ? this.props.reachMaxDecIconStyle : {}, minReached ? this.props.reachMinDecIconStyle : {}]} />
                 </Button>
                 <View style={[inputWraperStyle]}>
-                    <TextInput {...this.props.extraTextInputProps} editable={editable} returnKeyType='done' underlineColorAndroid='rgba(0,0,0,0)' keyboardType='numeric' value={this.state.stringValue} onChangeText={this.onChange} style={inputStyle} ref={ref => this.ref = ref} onBlur={this.onBlur} onFocus={this.onFocus} />
+                    <TextInput {...this.props.extraTextInputProps} editable={editable} returnKeyType='done' underlineColorAndroid='rgba(0,0,0,0)' keyboardType='numeric' value={stringValue} onChangeText={this.onChange} style={inputStyle} ref={ref => this.ref = ref} onBlur={this.onBlur} onFocus={this.onFocus} />
                 </View>
                 <Button onPress={this.inc} style={rightButtonStyle}>
                     <Icon name='add-outline' size={fontSize} style={[...iconStyle, maxReached ? this.props.reachMaxIncIconStyle : {}, minReached ? this.props.reachMinIncIconStyle : {}]} />
